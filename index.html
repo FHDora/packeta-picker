@@ -10,53 +10,35 @@
 
 <h2>Packeta csomagpont kiválasztása</h2>
 
-<button
-  id="packetaBtn"
-  style="padding:15px 25px;font-size:18px;border-radius:10px;">
-  Csomagpont kiválasztása
-</button>
+button.addEventListener("click", function () {
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  Packeta.Widget.pick(
+    "8f7f8c3c9e",
+    function(point) {
 
-  const button = document.getElementById("packetaBtn");
+      console.log("PACKETA RESULT:", point);
 
-  if (!button) {
-    console.error("Nincs packetaBtn gomb az oldalon!");
-    return;
-  }
-
-  button.addEventListener("click", function () {
-
-    Packeta.Widget.pick(
-      "8f7f8c3c9e",
-
-      function(point) {
-
-        console.log("Packeta point:", point);
-
-        if (!point || !point.name) {
-          alert("Nincs kiválasztott csomagpont!");
-          return;
-        }
-
-        const name = String(point.name).trim();
-
-        const tallyUrl =
-          "https://tally.so/r/rj2lKM"
-          + "?packeta_name=" + encodeURIComponent(name);
-
-        console.log("FINAL URL:", tallyUrl);
-
-        setTimeout(function () {
-          window.location.href = tallyUrl;
-        }, 300);
-
+      if (!point || !point.name) {
+        alert("Nem történt kiválasztás!");
+        return;
       }
 
-    );
+      const name = (point.name || "").toString().trim();
 
-  });
+      const tallyUrl =
+        "https://tally.so/r/rj2lKM"
+        + "?packeta_name=" + encodeURIComponent(name);
+
+      console.log("FINAL URL:", tallyUrl);
+
+      setTimeout(function () {
+        window.location.href = tallyUrl;
+      }, 300);
+
+    }
+  );
+
+});
 
 });
 </script>
