@@ -17,38 +17,46 @@
 </button>
 
 <script>
-const button = document.getElementById("packetaBtn");
+document.addEventListener("DOMContentLoaded", function () {
 
-button.addEventListener("click", function () {
+  const button = document.getElementById("packetaBtn");
 
-  Packeta.Widget.pick(
-    "8f7f8c3c9e",
+  if (!button) {
+    console.error("Nincs packetaBtn gomb az oldalon!");
+    return;
+  }
 
-    function(point) {
+  button.addEventListener("click", function () {
 
-      if (!point || !point.name) {
-        alert("Nincs csomagpont adat");
-        return;
+    Packeta.Widget.pick(
+      "8f7f8c3c9e",
+
+      function(point) {
+
+        console.log("Packeta point:", point);
+
+        if (!point || !point.name) {
+          alert("Nincs kiválasztott csomagpont!");
+          return;
+        }
+
+        const name = String(point.name).trim();
+
+        const tallyUrl =
+          "https://tally.so/r/rj2lKM"
+          + "?packeta_name=" + encodeURIComponent(name);
+
+        console.log("FINAL URL:", tallyUrl);
+
+        setTimeout(function () {
+          window.location.href = tallyUrl;
+        }, 300);
+
       }
 
-      const name = String(point.name).trim();
+    );
 
-      const tallyUrl =
-        "https://tally.so/r/rj2lKM"
-        + "?packeta_name=" + 
-      encodeURIComponent(name);
-
-      console.log("FINAL URL:", tallyUrl);
-
-      setTimeout(function () {
-       window.location.href = tallyUrl;
-      }, 300);
-      
-    }
-    
-   );
-
- });
+  });
 
 });
 </script>
