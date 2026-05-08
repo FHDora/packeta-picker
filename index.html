@@ -22,26 +22,26 @@ const button = document.getElementById("packetaBtn");
 button.addEventListener("click", function () {
 
   Packeta.Widget.pick(
-    "c095c4161ceee39f",
+    "8f7f8c3c9e",
+
     function(point) {
 
       if (!point || !point.name) {
         alert("Nincs csomagpont adat");
         return;
-        }
+      }
 
       const name = String(point.name).trim();
 
-        const tallyUrl =
-          "https://tally.so/r/rj2IKM"
-          + "?packeta_name=" + 
-          encodeURIComponent(name);
-          
-        console.log("FINAL URL:", tallyUrl);
-        alert(tallyUrl);
-        window.location.href = tallyUrl;
-      }
+      const tallyUrl =
+        "https://tally.so/r/rj2IKM"
+        + "?packeta_name=" + encodeURIComponent(name);
+
+      console.log("FINAL URL:", tallyUrl);
+
+      window.location.href = tallyUrl;
     }
+
   );
 
 });
