@@ -40,8 +40,9 @@ button.addEventListener("click", function () {
 
       console.log("FINAL URL:", tallyUrl);
 
-      window.location.href = tallyUrl;
-    }
+      setTimeout(function () {
+       window.location.href = tallyUrl;
+    }, 300);
 
   );
 
