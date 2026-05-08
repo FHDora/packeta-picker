@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Packeta választó</title>
+  <script src="https://widget.packeta.com/v6/www/js/library.js"></script>
+</head>
+
+<body style="font-family:sans-serif;padding:30px;text-align:center;">
+
+<h2>Packeta csomagpont kiválasztása</h2>
+
+<button
+  id="packetaBtn"
+  style="padding:15px 25px;font-size:18px;border-radius:10px;">
+  Csomagpont kiválasztása
+</button>
+
+<script>
+const button = document.getElementById("packetaBtn");
+
+button.addEventListener("click", function () {
+
+  Packeta.Widget.pick(
+    "c095c4161ceee39f",
+    function(point) {
+
+      if(point) {
+
+        const tallyUrl =
+          "https://tally.so/r/rj2IKM"
+          + "?packeta_name=" + encodeURIComponent(point.name)
+          + "&packeta_address=" + encodeURIComponent(point.place);
+
+        window.location.href = tallyUrl;
+      }
+    }
+  );
+
+});
+</script>
+
+</body>
+</html>
