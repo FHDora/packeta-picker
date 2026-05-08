@@ -25,14 +25,21 @@ button.addEventListener("click", function () {
     "c095c4161ceee39f",
     function(point) {
 
-      if(point) {
+      if (!point || !point.name) {
+        alert("Nincs csomagpont adat");
+        return;
+        }
+
+      const name = String(point.name).trim();
 
         const tallyUrl =
           "https://tally.so/r/rj2IKM"
-          + "?packeta_name=" + encodeURIComponent(point.name)
+          + "?packeta_name=" + 
+          encodeURIComponent(name);
           
-        console.log("TALLY URL:", tallyUrl);
+        console.log("FINAL URL:", tallyUrl);
         alert(tallyUrl);
+        window.location.href = tallyUrl;
       }
     }
   );
