@@ -1,40 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Packeta választó</title>
+
+  <script src="https://widget.packeta.com/v6/www/js/library.js"></script>
+</head>
+
+<body style="font-family:sans-serif;padding:30px;text-align:center;">
+
+  <h2>Packeta csomagpont kiválasztása</h2>
+
+  <button
+    id="packetaBtn"
+    style="padding:15px 25px;font-size:18px;border-radius:10px;cursor:pointer;">
+    Csomagpont kiválasztása
+  </button>
+
   <script>
-const button = document.getElementById("packetaBtn");
 
-button.addEventListener("click", function () {
+    const button = document.getElementById("packetaBtn");
 
-  Packeta.Widget.pick(
-    "8f7f8c3c9e",
+    button.addEventListener("click", function () {
 
-    function(point) {
+      Packeta.Widget.pick(
 
-      if (!point || !point.name) {
-        alert("Nincs kiválasztott csomagpont!");
-        return;
-      }
+        "8f7f8c3c9e",
 
-      const name = String(point.name).trim();
+        function (point) {
 
-      const tallyUrl =
-        "https://tally.so/r/rj2lKM"
-        + "?packeta_name=" + encodeURIComponent(name);
+          if (!point || !point.name) {
+            alert("Nincs kiválasztott csomagpont!");
+            return;
+          }
 
-      setTimeout(function () {
-        window.location.href = tallyUrl;
-      }, 300);
+          const name = String(point.name).trim();
 
-    }
+          const tallyUrl =
+            "https://tally.so/r/rj2lKM"
+            + "?packeta_name="
+            + encodeURIComponent(name);
 
-  );
+          setTimeout(function () {
 
-});
-</script>
+            window.location.href = tallyUrl;
 
-  
+          }, 300);
+
+        }
+
+      );
+
+    });
+
+  </script>
+
 </body>
+
 </html>
