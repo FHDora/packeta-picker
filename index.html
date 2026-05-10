@@ -44,8 +44,15 @@
           
           const address = String(point.address ||"").trim();
 
+          const params = new
+          URLSearchParams(window.location.search);
+
+          const returnUrl = 
+            params.get("returnUrl") ||
+            "https://tally.so/r/rj2lKM";
+          
           const tallyUrl =
-            "https://tally.so/r/rj2lKM"
+            returnUrl
             + "?packeta_name="
             + encodeURIComponent(name);
             + "&packeta_address="
