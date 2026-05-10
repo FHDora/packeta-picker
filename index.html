@@ -35,7 +35,13 @@
             return;
           }
 
-          const name = String(point.name).trim();
+          const name = String(
+            point.name ||
+            point.place ||
+            point.label ||
+            ""
+          ).trim();
+          
           const address = String(point.address).trim();
 
           const tallyUrl =
