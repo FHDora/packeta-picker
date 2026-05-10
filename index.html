@@ -42,7 +42,7 @@
             ""
           ).trim();
           
-          const address = String(point.address).trim();
+          const address = String(point.address ||"").trim();
 
           const tallyUrl =
             "https://tally.so/r/rj2lKM"
