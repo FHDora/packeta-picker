@@ -36,11 +36,14 @@
           }
 
           const name = String(point.name).trim();
+          const address = String(point.address || ””).trim();
 
           const tallyUrl =
             "https://tally.so/r/rj2lKM"
             + "?packeta_name="
             + encodeURIComponent(name);
+            + “&packeta_address=”
+            + encodeURIComponent(address);
 
           setTimeout(function () {
 
