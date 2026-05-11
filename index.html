@@ -58,11 +58,15 @@
             + "&packeta_address="
             + encodeURIComponent(address);
 
-          setTimeout(function () {
+          document.body.innerHTML =
+  "<h2 style='font-family:sans-serif;text-align:center;padding-top:40px;'>Csomagpont kiválasztva.<br>Visszairányítás...</h2>";
 
-            window.location.href = tallyUrl;
+setTimeout(function () {
 
-          }, 300);
+  window.location.href = tallyUrl;
+
+}, 1000);
+
 
         }
 
