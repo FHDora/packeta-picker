@@ -38,7 +38,9 @@
           const place = String(point.place ||"").trim();
           
           const name = String(point.name ||"").trim();
+          
           const id = String(point.id ||"").trim();
+          
           const params = new
           URLSearchParams(window.location.search);
 
@@ -50,9 +52,9 @@
             returnUrl
             + "?packeta_place="
             + encodeURIComponent(place);
-            + "&packeta_name="
+            + "?packeta_name="
             + encodeURIComponent(name);
-            + "&packeta_id="
+            + "?packeta_id="
             + encodeURIComponent(id);
 
           document.body.innerHTML =
