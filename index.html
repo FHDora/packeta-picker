@@ -30,22 +30,15 @@
 
         function (point) {
           
-          alert(JSON.stringify(point));
-          
           if (!point || !point.name) {
             alert("Nincs kiválasztott csomagpont!");
             return;
           }
 
-          const name = String(
-            point.name ||
-            point.place ||
-            point.label ||
-            ""
-          ).trim();
+          const place = String(point.place ||"").trim();
           
-          const address = String(point.address ||"").trim();
-          const pointId = String(point.id ||"").trim();
+          const name = String(point.name ||"").trim();
+          const id = String(point.id ||"").trim();
           const params = new
           URLSearchParams(window.location.search);
 
@@ -55,12 +48,12 @@
           
           const tallyUrl =
             returnUrl
-            + "?packeta_name="
+            + "?packeta_place="
+            + encodeURIComponent(place);
+            + "&packeta_name="
             + encodeURIComponent(name);
-            + "&packeta_address="
-            + encodeURIComponent(address);
             + "&packeta_id="
-            + encodeURIComponent(pointId);
+            + encodeURIComponent(id);
 
           document.body.innerHTML =
   "<h2 style='font-family:sans-serif;text-align:center;padding-top:40px;'>Csomagpont kiválasztva.<br>Visszairányítás...</h2>";
